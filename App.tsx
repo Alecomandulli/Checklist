@@ -81,7 +81,7 @@ const App: React.FC = () => {
     const [turno, setTurno] = useState('');
     const [vtr, setVtr] = useState('');
 
-    // Initialize System (Seed Admins)
+    // Initialize System (Seed Users)
     useEffect(() => {
         const usersStorage = localStorage.getItem('ambulanceUsers');
         let users: User[] = usersStorage ? JSON.parse(usersStorage) : [];
@@ -106,6 +106,18 @@ const App: React.FC = () => {
                 email: 'alessandro@admin.com',
                 cpf: alessandroCpf,
                 role: 'admin'
+            });
+            hasChanges = true;
+        }
+
+        // 3. Ensure Specific User: Luciana Tonetto
+        const lucianaCpf = '80998828068';
+        if (!users.some(u => u.cpf === lucianaCpf)) {
+            users.push({
+                name: 'Luciana Tonetto',
+                email: 'lucianatonetto@hotmail.com',
+                cpf: lucianaCpf,
+                role: 'user'
             });
             hasChanges = true;
         }
